@@ -1,4 +1,4 @@
-package com.adaze.Quizz;
+package com.adaze.quizz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

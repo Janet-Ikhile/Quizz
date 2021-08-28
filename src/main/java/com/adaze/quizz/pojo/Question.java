@@ -1,18 +1,29 @@
-package com.adaze.Quizz.pojo;
+package com.adaze.quizz.pojo;
 
 
-public class QuizPojo {
+import java.util.Arrays;
+import java.util.List;
 
+public class Question {
     private int id;
     private String question;
     private String answer;
-    private String[] options;
+    private List<String> options;
 
-    public String[] getOptions() {
+
+    public Question(int id, String question, String answer, List<String> options) {
+        this.id = id;
+        this.question = question;
+        this.answer = answer;
+        this.options = options;
+    }
+
+
+    public List<String> getOptions() {
         return options;
     }
 
-    public void setOptions(String[] options) {
+    public void setOptions(List<String> options) {
         this.options = options;
     }
 
@@ -42,11 +53,11 @@ public class QuizPojo {
 
     @Override
     public String toString() {
-        return "QuizPojo{" +
+        return "Question{" +
                 "id=" + id +
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
+                ", options=" + options +
                 '}';
     }
-
 }
