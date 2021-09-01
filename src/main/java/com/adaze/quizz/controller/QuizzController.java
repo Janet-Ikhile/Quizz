@@ -23,6 +23,7 @@ public class QuizzController {
     public Question getRandomQuestion(){
         return quizzService.randomQuestion();
     }
+
     @RequestMapping("/questions")
     public List<Question> getAllQuestions(){
         return quizzService.getAllQuestions();
