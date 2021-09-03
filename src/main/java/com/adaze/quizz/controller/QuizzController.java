@@ -33,4 +33,9 @@ public class QuizzController {
     public Question getSelectedQuestion(@PathVariable int id){
         return quizzService.getSelectedQuestion(id);
     }
+
+    @RequestMapping("/questions/category/{category}")
+    public List<Question> getQuestionsByCategory(@PathVariable String category){
+        return quizzService.getQuestionsByCategory(category);
+    }
 }
