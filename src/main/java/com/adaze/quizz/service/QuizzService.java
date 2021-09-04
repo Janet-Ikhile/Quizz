@@ -23,7 +23,7 @@ public class QuizzService {
 
     public Question randomQuestion() {
         Random rand = new Random();
-        int randomPicker = rand.nextInt(6);
+        int randomPicker = rand.nextInt(questions.size());
 
         Question randomQuestion = questions.get(randomPicker);
         return randomQuestion;
