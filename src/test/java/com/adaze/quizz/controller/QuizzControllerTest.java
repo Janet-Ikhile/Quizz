@@ -1,4 +1,4 @@
-package com.adaze.Quizz.controller;
+package com.adaze.quizz.controller;
 
 import org.junit.jupiter.api.Test;
 

@@ -3,9 +3,7 @@ package com.adaze.quizz.controller;
 import com.adaze.quizz.pojo.Question;
 import com.adaze.quizz.service.QuizzService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +30,17 @@ public class QuizzController {
     @RequestMapping("/questions/{id}")
     public Question getSelectedQuestion(@PathVariable int id){
         return quizzService.getSelectedQuestion(id);
+    }
+
+    @RequestMapping("/questions/category/{category}")
+    public List<Question> getCategorizedQuestions(@PathVariable String category){
+        return quizzService.getCategorizedQuestions(category);
+    }
+
+    @PostMapping("/questions/add-question")
+    public String addQuestion(@RequestBody Question question){
+        quizzService.addQuestion(question);
+        String response= "Question successfully added";
+        return response;
     }
 }
