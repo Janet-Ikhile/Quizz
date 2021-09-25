@@ -24,7 +24,7 @@ public class QuizzController {
 
     @RequestMapping("/questions")
     public List<Question> getAllQuestions(){
-        return quizzService.getAllQuestions();
+        return quizzService.getAllQuestionsR();
     }
 
     @RequestMapping("/questions/{id}")
@@ -39,7 +39,7 @@ public class QuizzController {
 
     @PostMapping("/questions/add-question")
     public String addQuestion(@RequestBody Question question){
-        quizzService.addQuestion(question);
+        quizzService.addQuestionR(question);
         String response= "Question successfully added";
         return response;
     }

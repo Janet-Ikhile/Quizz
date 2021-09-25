@@ -2,6 +2,8 @@ package com.adaze.quizz.service;
 
 import com.adaze.quizz.enums.Category;
 import com.adaze.quizz.pojo.Question;
+import com.adaze.quizz.repository.QuizzRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.Random;
 
 @Service
 public class QuizzService {
+
+    @Autowired
+    QuizzRepository repository;
 
     private List<Question> questions = new ArrayList<>(Arrays.asList(
             new Question(1, "Who was the first man God created?", "Adam", Arrays.asList("Gabriel", "John", "Adam", "Phillips"), Category.BIBLE),
@@ -37,6 +42,10 @@ public class QuizzService {
         return questions;
     }
 
+    public List<Question> getAllQuestionsR() {
+        return (List<Question>) repository.findAll();
+    }
+
     public Question getSelectedQuestion(int id) {
         Question question = questions.get(id - 1);
         return question;
@@ -58,5 +67,9 @@ public class QuizzService {
 
     public void addQuestion(Question question) {
         questions.add(question);
+    }
+
+    public void addQuestionR(Question question) {
+        repository.save(question);
     }
 }

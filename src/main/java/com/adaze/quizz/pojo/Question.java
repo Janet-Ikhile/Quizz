@@ -3,14 +3,25 @@ package com.adaze.quizz.pojo;
 
 import com.adaze.quizz.enums.Category;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.List;
 
+@Entity
 public class Question {
+
+    @Id
     private int id;
+
     private String question;
+
     private String answer;
+
+    @ElementCollection(targetClass=String.class)
     private List<String> options;
+
     private Category category;
 
 
