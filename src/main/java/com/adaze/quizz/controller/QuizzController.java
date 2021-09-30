@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class QuizzController {
@@ -22,25 +23,24 @@ public class QuizzController {
         return quizzService.randomQuestion();
     }
 
-    @RequestMapping("/questions")
-    public List<Question> getAllQuestions(){
-        return quizzService.getAllQuestions();
-    }
-
-    @RequestMapping("/questions/{id}")
-    public Question getSelectedQuestion(@PathVariable int id){
-        return quizzService.getSelectedQuestion(id);
-    }
 
     @RequestMapping("/questions/category/{category}")
     public List<Question> getCategorizedQuestions(@PathVariable String category){
         return quizzService.getCategorizedQuestions(category);
     }
 
+    @RequestMapping("/questions/{id}")
+    public Optional<Question> getSelectedQuestion(@PathVariable Integer id) {
+        return quizzService.getSelectedQuestion(id);
+    }
+
     @PostMapping("/questions/add-question")
-    public String addQuestion(@RequestBody Question question){
-        quizzService.addQuestion(question);
-        String response= "Question successfully added";
-        return response;
+    public String addQuestions(@RequestBody Question question){
+      quizzService.addQuestions(question);
+        return "Successfully added questions";
+    }
+    @RequestMapping("/questions")
+    public List<Question> getAllQuestions(){
+        return quizzService.returnAllQuestions();
     }
 }
