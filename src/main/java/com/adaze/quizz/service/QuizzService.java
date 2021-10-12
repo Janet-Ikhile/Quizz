@@ -22,14 +22,7 @@ public class QuizzService {
 
     public List<Question> getCategorizedQuestions(String categoryString) {
         Category category = Category.valueOf(categoryString);
-        List<Question> questionsInCategory = new ArrayList<>();
-
-        for (Question question : returnAllQuestions()) {
-            if(question.getCategory().equals(category)){
-                questionsInCategory.add(question);
-            }
-        }
-
+        List<Question> questionsInCategory = repository.findByCategory(category);
 
         return questionsInCategory;
     }
