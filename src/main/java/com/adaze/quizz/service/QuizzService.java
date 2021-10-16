@@ -16,15 +16,12 @@ public class QuizzService {
     public Question randomQuestion() {
         Random rand = new Random();
         int randomPicker = rand.nextInt(returnAllQuestions().size());
-
         return returnAllQuestions().get(randomPicker);
     }
 
     public List<Question> getCategorizedQuestions(String categoryString) {
         Category category = Category.valueOf(categoryString);
-        List<Question> questionsInCategory = repository.findByCategory(category);
-
-        return questionsInCategory;
+        return repository.findByCategory(category);
     }
 
    public Optional<Question> getSelectedQuestion(Integer id) {
@@ -34,6 +31,7 @@ public class QuizzService {
     public void addQuestions (Question question){
     repository.save(question);
     }
+
     public List<Question> returnAllQuestions(){
         return (List<Question>) repository.findAll();
     }

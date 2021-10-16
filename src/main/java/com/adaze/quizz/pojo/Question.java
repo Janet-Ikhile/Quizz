@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.List;
+
 @Entity
 public class Question {
     @Id
@@ -18,7 +19,7 @@ public class Question {
     private String question;
     private String answer;
 
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     private List<String> options;
 
     private Category category;

@@ -14,18 +14,18 @@ public class QuizzController {
     QuizzService quizzService;
 
     @RequestMapping("/")
-    public String tellThem(){
+    public String tellThem() {
         return "Hello World";
     }
 
     @RequestMapping("/random-question")
-    public Question getRandomQuestion(){
+    public Question getRandomQuestion() {
         return quizzService.randomQuestion();
     }
 
 
     @RequestMapping("/questions/category/{category}")
-    public List<Question> getCategorizedQuestions(@PathVariable String category){
+    public List<Question> getCategorizedQuestions(@PathVariable String category) {
         return quizzService.getCategorizedQuestions(category);
     }
 
@@ -35,12 +35,13 @@ public class QuizzController {
     }
 
     @PostMapping("/questions/add-question")
-    public String addQuestions(@RequestBody Question question){
-      quizzService.addQuestions(question);
+    public String addQuestions(@RequestBody Question question) {
+        quizzService.addQuestions(question);
         return "Successfully added questions";
     }
+
     @RequestMapping("/questions")
-    public List<Question> getAllQuestions(){
+    public List<Question> getAllQuestions() {
         return quizzService.returnAllQuestions();
     }
 }
