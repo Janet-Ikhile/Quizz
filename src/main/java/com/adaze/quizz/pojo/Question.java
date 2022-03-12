@@ -2,30 +2,26 @@ package com.adaze.quizz.pojo;
 
 
 import com.adaze.quizz.enums.Category;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Arrays;
+
 import java.util.List;
 
-@Entity
+@Document("questions")
 public class Question {
     @Id
-    @GeneratedValue
-    private Integer id;
+    private String id;
 
     private String question;
     private String answer;
 
-    @ElementCollection(targetClass = String.class)
     private List<String> options;
 
     private Category category;
 
 
-    public Question(Integer id, String question, String answer, List<String> options) {
+    public Question(String id, String question, String answer, List<String> options) {
         this.id = id;
         this.question = question;
         this.answer = answer;
@@ -35,7 +31,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(Integer id, String question, String answer, List<String> options, Category category) {
+    public Question(String id, String question, String answer, List<String> options, Category category) {
         this.id = id;
         this.question = question;
         this.answer = answer;
@@ -51,11 +47,11 @@ public class Question {
         this.options = options;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

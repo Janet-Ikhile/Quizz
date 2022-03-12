@@ -2,17 +2,20 @@ package com.adaze.quizz.service;
 
 import com.adaze.quizz.enums.Category;
 import com.adaze.quizz.pojo.Question;
-import com.adaze.quizz.repository.QuizzRepository;
+import com.adaze.quizz.repository.QuizzMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class QuizzService {
 
     @Autowired
-    QuizzRepository repository;
+    QuizzMongoRepository repository;
+
     public Question randomQuestion() {
         Random rand = new Random();
         int randomPicker = rand.nextInt(returnAllQuestions().size());
@@ -21,11 +24,11 @@ public class QuizzService {
 
     public List<Question> getCategorizedQuestions(String categoryString) {
         Category category = Category.valueOf(categoryString);
-        return repository.findByCategory(category);
+        return repository.getQuestionByCategory(category);
     }
 
    public Optional<Question> getSelectedQuestion(Integer id) {
-       return repository.findById(id);
+       return repository.findById(Integer.toString(id));
    }
 
     public void addQuestions (Question question){
@@ -33,6 +36,6 @@ public class QuizzService {
     }
 
     public List<Question> returnAllQuestions(){
-        return (List<Question>) repository.findAll();
+        return repository.findAll();
     }
 }
